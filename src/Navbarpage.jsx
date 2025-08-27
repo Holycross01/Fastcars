@@ -106,7 +106,7 @@ const Navbarpage = () => {
           style={{ backgroundImage: "url('/images/peter-broomfield.jpg')" }}
         >
           <div className="absolute left-0 right-0 bg-black"></div>
-          <h2 className=" text-purple-200 font-thin uppercase sm:pt-25 text-xl lg:text-5xl sm:pl-25 pt-10 pl-10">
+          <h2 className=" text-purple-200 font-thin uppercase sm:pt-25 text-xl lg:text-5xl sm:pl-25 pt-25 pl-10">
             Schedule an on-site visit to cash <br />
             in your vehicle and enjoy the
             <br />
