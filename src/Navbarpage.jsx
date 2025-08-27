@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import emailjs from '@emailjs/browser';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Navbarpage = () => {
   const links = [
@@ -10,14 +11,17 @@ const Navbarpage = () => {
     { author: "checkings", href: "#", id: 5 },
   ];
   const [togglebutton, settogglebutton] = useState(false);
-
+  const [submitting, setSubmitting]= useState(false)
+  //  const [statusMessage, setStatusMessage] = useState('')
 
 
     const form = useRef(null)
+    const submittedAlert = () => toast.success("submitted",{style:{background:'#ECFDF5', color:'#065F46',},})
+    const failedAlert = () => toast.error('not submitted',{style:{background:'#FEE2E2', color: '#991B1B',}})
 
  const sendEmail = (e) => {
     e.preventDefault();
-    // setSubmitting(true)
+    setSubmitting(true)
     if(!form.current.from_name.value){
       return
     }
@@ -29,15 +33,19 @@ const Navbarpage = () => {
       .then(
         () => {
           console.log('SUCCESS!');
-          alert('meesage sent to mail')
+          
           form.current.reset()
           console.log(form.current.firstname)
-          // setSubmitting(false)
+          setSubmitting(false)
+          // setStatusMessage('meesage sent to mail')
+        submittedAlert();
         },
         (error) => {
           console.log('FAILED...', error.text);
-          alert('not submitted')
-          // setSubmitting(false)
+          setSubmitting(false)
+          // setStatusMessage('not submitted')
+          failedAlert();
+         
  });
   };
 
@@ -150,11 +158,13 @@ const Navbarpage = () => {
 
           <label className="text-2xl font-thin">PhoneNumber</label>
           <input type="text" name="phone-number" className="flex-1 rounded-sm border border-gray-400 outline-none p-2"/>
- <button className="bg-green-500 py-1 px-5 text-white my-3">submit</button>
+ <button className="bg-green-500 py-1 px-5 text-white my-3">{submitting ? "submitting" : "submit"}</button>
+ {/* <div ><p className={`text-center ${statusMessage ? "text-green-500" : "text-red-600"}`}>{statusMessage ? "meesage sent to mail" : "not submitted"}</p></div> */}
         </form>
 
        
       </section>
+          <Toaster />
     </div>
   );
 };
