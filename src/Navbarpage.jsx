@@ -53,7 +53,7 @@ const Navbarpage = () => {
 
   return (
     <div>
-      <header className="bg-blue-500 p-2">
+      <header className="bg-blue-500 p-2 fixed z-[10000] w-full">
         <div className="max-w-6xl mx-auto flex justify-between">
           <a href="#">
             <i>
@@ -102,11 +102,11 @@ const Navbarpage = () => {
 
       <section>
         <div
-          className="h-screen bg-cover bg-center"
+          className="h-screen bg-cover bg-center relative px-1"
           style={{ backgroundImage: "url('/images/peter-broomfield.jpg')" }}
         >
-          {/* <div> */}
-          <h2 className="sm:block hidden text-purple-200 text-5xl font-thin uppercase pt-25 pl-25">
+          <div className="absolute left-0 right-0 bg-black"></div>
+          <h2 className=" text-purple-200 font-thin uppercase sm:pt-25 text-xl lg:text-5xl sm:pl-25 pt-10 pl-10">
             Schedule an on-site visit to cash <br />
             in your vehicle and enjoy the
             <br />
